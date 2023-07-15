@@ -1,3 +1,16 @@
+import type { Student } from "@prisma/client";
+import {
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import Head from "next/head";
+import { useMemo, useState } from "react";
+import type { ChangeEvent } from "react";
+import { LoadingPage } from "~/components/si/loading";
+import { Input } from "~/components/ui/input";
 import {
   Table,
   TableBody,
@@ -7,22 +20,7 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table";
-import { Student } from "@prisma/client";
-import {
-  createColumnHelper,
-  flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
-import { signIn, signOut, useSession } from "next-auth/react";
-import Head from "next/head";
-import Link from "next/link";
-import { ChangeEvent, useMemo, useState } from "react";
 import { api } from "~/utils/api";
-import { Input } from "~/components/ui/input";
-import { useQueryClient } from "@tanstack/react-query";
-import { LoadingPage } from "~/components/si/loading";
 
 const columnHelper = createColumnHelper<Student>();
 
